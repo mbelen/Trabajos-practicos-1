@@ -1,0 +1,24 @@
+.container {
+  padding: 25px;
+}
+
+.rectangulo {
+  width: 1282px;
+  height: 500px;
+  border-color: black;
+  border: 1px solid;
+  text-align: center;
+}
+
+.margen {
+  margin-top: 40px;
+}
+
+.imagenes {
+  text-align: right;
+  }
+
+.boton {
+  text-align: center;
+  margin-top: 30px;
+}
