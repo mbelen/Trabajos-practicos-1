@@ -5,11 +5,14 @@ function go(ruta) {
 
 function saveName() {
 
-    const input = document.getElementById('name');
-    const name = input.value;
+    const input   = document.getElementById('name');
+    const name    = input.value;
+    const noNameEl = $('#noName').length; 
 
-    if(!name) {
+    if(!name && !noNameEl) {
         $(".user").append("<p id ='noName'>¡Hey, escribe tu nombre!</p>");
+        return;
+    } else if(!name) {
         return;
     }
 
@@ -17,3 +20,20 @@ function saveName() {
 
     go("./tablero.html");
 }
+
+function isUserExists() {
+
+    const userName = localStorage.getItem('name');
+
+    if (!userName) {
+        go("./index.html");
+        return;
+    }
+}
+
+function goBack() {
+    go('./index.html');
+    return;
+}
+
+isUserExists();
