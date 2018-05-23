@@ -7,7 +7,7 @@ function saveName() {
 
     const input   = document.getElementById('name');
     const name    = input.value;
-    const noNameEl = $('#noName').length; 
+    const noNameEl = $('#noName').length;
 
     if(!name && !noNameEl) {
         $(".user").append("<p id ='noName'>¡Hey, escribe tu nombre!</p>");
@@ -36,4 +36,14 @@ function goBack() {
     return;
 }
 
+function tryAgain() {
+  go('./tablero.html');
+  return;
+}
+
+function startBG() {
+  let bgAudio      = new Audio ();
+  bgAudio.src      = 'audios/simpsons-opening.mp3';
+  bgAudio.play();
+}
 isUserExists();

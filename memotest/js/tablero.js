@@ -2,32 +2,36 @@ class Carta {
     constructor(x, y, cara) {
         this.x = x;
         this.y = y;
-        this.id = `${x}${y}`
+        this.id = `${x}${y}`;
         this.mascara = 'img/mano.jpg';
         this.cara = cara;
 
         $('.cartas').append(`
-            <div class="carta">
+            <div class="carta" id="${this.id}-carta">
                 <img src=${this.mascara} alt="mascara ${x}-${y}" id=${this.id} >
             </div>
         `);
     }
 
-    voltear() {
-        $(`#${this.id}`).attr('src', this.cara);
+    mostrar() {
+        $(`#${this.id}-carta > img`).attr('src', this.cara);
+        $(`#${this.id}-carta`).toggleClass('rotate-card');
     }
 
     esconder() {
-        $(`#${this.id}`).attr('src', this.mascara);
+      $(`#${this.id}-carta > img`).attr('src', this.mascara);
+      $(`#${this.id}-carta`).toggleClass('rotate-card');
     }
 }
 
-// 1. constantes
-const COLUMNAS  = 4;
-const FILAS     = 3;
-const cartas    = [];
-let INTENTOS    = 14;
-let PUNTOS      = 0;
+// 1. global vars
+const COLUMNAS   = 4;
+const FILAS      = 3;
+const cartas     = [];
+let INTENTOS     = 12;
+let errorAudio   = new Audio ();
+errorAudio.src   = 'audios/matanga.mp3';
+let successAudio = new Audio ();
 
 // 2. Asigna cartas aleatoreas
 const caras    = [
@@ -41,7 +45,6 @@ const caras    = [
 const desordenador = [];
 
 for (let i = 0; i < 6; i++) {
-
     // Escoger aleatoriamente uno del arreglo de caras
     const randomIndice = dameUnRandom(0, caras.length);
     const cara = caras[randomIndice];
@@ -57,8 +60,7 @@ desordenador.sort(function () {
     return 1 - dameUnRandom(0, 6);
 });
 
-
-// 4. asignar caras
+// start the game
 function start() {
     for (let i = 0; i < FILAS; i++) {
         for (let j = 0; j < COLUMNAS; j++) {
@@ -69,57 +71,68 @@ function start() {
 
 start();
 
-
-
 // 5.1. cartas methods
 let seleccionados = [];
-
+let matchs = [];
 function obtenerCarta(id) {
-    // filtra elementos de un array si es que la condicion se cumple
-    return cartas.find(function(item){
-        return item.id === id;
-    });
-    
+    // find() es un method en los arrays que "Encuentra" el elemento si la condicion se cumple
+    return cartas.find(i => i.id === id);
 }
 
-function restart() {
+function counter() {
     INTENTOS--;
-    PUNTOS = 0;
-    $('.infoTablero>p').text(`Intentos: ${INTENTOS}`)
-    if(INTENTOS == 0) return go('./error.html');
-    seleccionados = [];
-    setTimeout( function(){
-        cartas.forEach(item => item.esconder());
-    }, 750);
+    $('.infoTablero>p').text(`Intentos: ${INTENTOS}`);
+    if(INTENTOS === 0) return go('./error.html');
+}
+
+function isSelected(id) {
+    const wasSelected = seleccionados.find(x => x.id === id);
+    const wasMatched  = matchs.find(x => x.id === id);
+    if (wasSelected || wasMatched) {
+        return true;
+    }
+    return false;
+}
+
+function playerWon() {
+    // bgAudio.pause();
+    // bgAudio.currentTime = 0;
+    go('./ganador.html');
+    return;
 }
 
 function verificadorDeCartas(carta) {
-    // find() -> busca si existe algun elemento en ese array
-    const isSelected = seleccionados.find(x => x.id === carta.id);
-    if(isSelected) return alert('esta carta ya la seleccionaste homero!');
-
+    const match = seleccionados.find(item => item.cara === carta.cara);
     seleccionados.push(carta);
-    let match = seleccionados.find(x => x.cara === carta.cara);
-    if(seleccionados.length > 1) {
-        // console.log(match, 'MATCH')
-        // if(match.length > 1) {
-        //     console.log('hell yeah')
-        //     return PUNTOS++;
-        // }
-        
-        return restart();        
+    if(match) {
+        // sucess match
+        errorAudio.play()
+        seleccionados.map(x => matchs.push(x));
+        seleccionados = [];
+        matchs.length === 12 ? playerWon() : null;
+    } else if ( seleccionados.length % 2 === 0) {
+        // common dude
 
+        seleccionados.map(card => {
+            setTimeout(() => {
+                card.esconder();
+            }, 1000)
+        });
+        counter();
+        seleccionados = [];
     }
-
-    return;
+    return null;
 
 }
 
 // 5.2. evento click de cada carta
 $('.carta').on('click', function(event) {
     const carta = obtenerCarta(event.target.id);
-    carta.voltear();
-    verificadorDeCartas(carta);
+    if(!isSelected(carta.id)){
+        carta.mostrar();
+        verificadorDeCartas(carta);
+    }
+    return;
 });
 
 
