@@ -139,3 +139,5 @@ $('.carta').on('click', function(event) {
 function dameUnRandom(min, max) {
     return Math.floor((Math.random() * (max - min)) + min);
 }
+
+isUserExists();

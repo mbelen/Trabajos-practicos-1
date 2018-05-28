@@ -46,4 +46,3 @@ function startBG() {
   bgAudio.src      = 'audios/simpsons-opening.mp3';
   bgAudio.play();
 }
-isUserExists();
