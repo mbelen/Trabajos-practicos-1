@@ -40,9 +40,3 @@ function tryAgain() {
   go('./tablero.html');
   return;
 }
-
-function startBG() {
-  let bgAudio      = new Audio ();
-  bgAudio.src      = 'audios/simpsons-opening.mp3';
-  bgAudio.play();
-}

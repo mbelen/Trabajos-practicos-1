@@ -29,9 +29,8 @@ const COLUMNAS   = 4;
 const FILAS      = 3;
 const cartas     = [];
 let INTENTOS     = 12;
-let errorAudio   = new Audio ();
-errorAudio.src   = 'audios/matanga.mp3';
-let successAudio = new Audio ();
+let successAudio   = new Audio ();
+successAudio.src   = 'audios/matanga.mp3';
 
 // 2. Asigna cartas aleatoreas
 const caras    = [
@@ -95,8 +94,6 @@ function isSelected(id) {
 }
 
 function playerWon() {
-    // bgAudio.pause();
-    // bgAudio.currentTime = 0;
     go('./ganador.html');
     return;
 }
@@ -106,7 +103,7 @@ function verificadorDeCartas(carta) {
     seleccionados.push(carta);
     if(match) {
         // sucess match
-        errorAudio.play()
+        successAudio.play()
         seleccionados.map(x => matchs.push(x));
         seleccionados = [];
         matchs.length === 12 ? playerWon() : null;
