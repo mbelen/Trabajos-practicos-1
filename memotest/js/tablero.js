@@ -28,7 +28,8 @@ class Carta {
 const COLUMNAS   = 4;
 const FILAS      = 3;
 const cartas     = [];
-let INTENTOS     = 12;
+let INTENTOS     = localStorage.getItem("nivel") || 18;
+let PUNTAJE      = 1000;
 let successAudio   = new Audio ();
 successAudio.src   = 'audios/matanga.mp3';
 
@@ -68,6 +69,7 @@ function start() {
     }
 }
 
+$('.infoTablero .intentos').text(`Intentos: ${INTENTOS}`);
 start();
 
 // 5.1. cartas methods
@@ -80,8 +82,12 @@ function obtenerCarta(id) {
 
 function counter() {
     INTENTOS--;
-    $('.infoTablero>p').text(`Intentos: ${INTENTOS}`);
-    if(INTENTOS === 0) return go('./error.html');
+    PUNTAJE-=20;
+    $('.infoTablero .intentos').text(`Intentos: ${INTENTOS}`);
+    if(INTENTOS === 0) {
+        localStorage.removeItem("nivel")
+        return go('./error.html')
+    }
 }
 
 function isSelected(id) {
@@ -94,6 +100,13 @@ function isSelected(id) {
 }
 
 function playerWon() {
+    const prevousWinners = JSON.parse(localStorage.getItem("ganadores")) || [];
+    const user = {
+        userName: localStorage.getItem("name"),
+        puntaje: PUNTAJE
+    };
+    prevousWinners.push(user);    
+    localStorage.setItem("ganadores", JSON.stringify(prevousWinners));    
     go('./ganador.html');
     return;
 }
@@ -103,13 +116,14 @@ function verificadorDeCartas(carta) {
     seleccionados.push(carta);
     if(match) {
         // sucess match
-        successAudio.play()
-        seleccionados.map(x => matchs.push(x));
-        seleccionados = [];
-        matchs.length === 12 ? playerWon() : null;
+        PUNTAJE += 20;
+        //successAudio.play()
+        //seleccionados.map(x => matchs.push(x));
+        //seleccionados = [];
+        //matchs.length === 12 ? playerWon() : null;
+        playerWon()
     } else if ( seleccionados.length % 2 === 0) {
-        // common dude
-
+        // fail match
         seleccionados.map(card => {
             setTimeout(() => {
                 card.esconder();

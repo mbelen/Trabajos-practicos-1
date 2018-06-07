@@ -1,6 +1,6 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
-<head>
+   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>MemoTest</title>
@@ -24,15 +24,24 @@
     <link rel="manifest" href="img/favicon/manifest.json">
     <link rel="stylesheet" type="text/css" href="css/estilos.css" />
     <link href="https://fonts.googleapis.com/css?family=Just+Another+Hand" rel="stylesheet">
-</head>
-<body>
-<!--no completo el memotest-->
-<div class="falla" id="error">
-    <img src="img/time.jpg" alt="tiempo" width="400" height="400">
-    <button id="newPlay" class="boton" type="button" onClick="goBack()">Vuelve a intentarlo</button>
-</div>
-</div>
-<script type="text/javascript" src="js/jquery3.min.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
-</body>
+   </head>
+   <body>
+        <!--niveles-->
+        <section class="medidor">
+        <div class="level">
+                <div class="level" id="facil" onclick="setLevel('facil')"> 
+                        <button class="niveles">Fácil</button>
+                </div>
+                <div class="level" id="facil" onclick="setLevel('intermedio')">
+                        <button class="niveles">intermedio</button>
+                </div>
+                <div class="level" id="facil" onclick="setLevel('dificil')">
+                        <button class="niveles">Difícil</button>
+                </div>
+        </div>  
+        </section>
+    <script type="text/javascript" src="js/jquery3.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/nivel.js"></script>
+   </body>
 </html>

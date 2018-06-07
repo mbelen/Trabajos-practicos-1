@@ -18,7 +18,7 @@ function saveName() {
 
     localStorage.setItem('name', name);
 
-    go("./tablero.html");
+    go("./nivel.html");
 }
 
 function isUserExists() {
@@ -34,9 +34,4 @@ function isUserExists() {
 function goBack() {
     go('./index.html');
     return;
-}
-
-function tryAgain() {
-  go('./tablero.html');
-  return;
 }
