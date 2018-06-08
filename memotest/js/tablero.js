@@ -117,11 +117,11 @@ function verificadorDeCartas(carta) {
     if(match) {
         // sucess match
         PUNTAJE += 20;
-        //successAudio.play()
-        //seleccionados.map(x => matchs.push(x));
-        //seleccionados = [];
-        //matchs.length === 12 ? playerWon() : null;
-        playerWon()
+        successAudio.play()
+        seleccionados.map(x => matchs.push(x));
+        seleccionados = [];
+        matchs.length === 12 ? playerWon() : null;
+       
     } else if ( seleccionados.length % 2 === 0) {
         // fail match
         seleccionados.map(card => {

@@ -1,4 +1,3 @@
-
 function setLevel(level) {
 
     let intentos;

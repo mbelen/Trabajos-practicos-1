@@ -227,4 +227,8 @@ input:focus {
         right: 106px;
     }
 
+    .ranking {
+        transform: translate(-96%, 77%);
+    }
+
 }
