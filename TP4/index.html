@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+     <meta charset="utf-8" />
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <title>EncuestaAjax</title>
+     <link rel="stylesheet" type="text/css" media="screen" href="css/estilos.css" />
+ </head>
+    <body>
+        <div class="container">
+            <form class="encuesta" id="encuesta">
+                <h3>Encuesta de tecnologia</h3>
+                <p>País de residencia</p>
+                <select id="selector-paises" name="paises">
+                </select>
+                <div class="pregunta">
+                    <p>1.¿Cuál es tu lenguaje de programación preferido?</p> 
+                    <div>
+                        <label for="JavaScript">JavaScript</label>
+                        <input type="radio" name="lenguage" value="JavaScript" checked>
+                        <label for="Java">Java</label> 
+                        <input type="radio" name="lenguage" value="Java">
+                        <label for="C#">C#</label>
+                        <input type="radio" name="lenguage" value="C#">
+                    </div>
+                </div>
+            
+                <div class="pregunta">
+                    <p>2.¿Qué sistema operativo te gusta más?</p> 
+                    <div>
+                        <label for="Windows">Windows</label>
+                        <input type="radio" name="system" value="Windows" checked>
+                        <label for="Linux">Linux</label>
+                        <input type="radio" name="system" value="Linux">
+                        <label for="Solaris">Solaris</label> 
+                        <input type="radio" name="system" value="Solaris"> 
+                    </div>
+                </div>
+                
+                <div class="pregunta">
+                    <p>3.¿Qué frameworks usas?</p>
+                    <div>
+                        <label for="Angular">Angular.js</label>
+                        <input type="radio" name="framework" value="Angular" checked>
+                        <label for="React">React.js</label>
+                        <input type="radio" name="framework" value="React">
+                        <label for="jQuery">jQuery.js</label> 
+                        <input type="radio" name="framework" value="jQuery"> 
+                    </div>
+                </div>
+                <div class="pregunta">
+                    <p>4.¿Cuál es tu preprocesador de CSS favorito?</p>
+                    <div>
+                        <label for="less">Less</label>
+                        <input type="radio" name="precss" value="less" checked>
+                        <label for="sass">Sass</label>
+                        <input type="radio" name="precss" value="sass">
+                        <label for="stylus">Stylus</label> 
+                        <input type="radio" name="precss" value="stylus"> 
+                    </div>
+                </div>
+                <div class="enviar">
+                    <input class="boton" type="submit" value="Enviar">
+                </div>
+            </form>
+            <div class="resultados">
+                    <p>Resultados</p>
+                    <table>
+                        <thead> <!--el head de la tabla-->
+                            <tr><!--una fila dentro de la tabla-->
+                                <th>País de residencia</th><!--celdas para la cabecera-->
+                                <th>Lenguaje</th>
+                                <th>Sistema operativo</th>
+                                <th>Frameworks</th>
+                                <th>preprocesador</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla"> <!--el cuerpo de la tabla-->
+                            <!-- EL CONTENIDO SE GENERA DE MANERA DINAMICA CON JQUERY -->
+                        </tbody>
+                    </table>
+            </div> 
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="js/index.js"></script>
+    </body>
+ </html>
