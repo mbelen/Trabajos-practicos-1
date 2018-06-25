@@ -1,8 +1,11 @@
-var express = require('express');
-var app = express ();
+const express = require('express');
+const app = express ();
+const router = require('./routes/puppiesRouter');
 
-app.get("/",function(req,res){
-    res.send("jeje");
+const PORT = 8080;
+
+app.use('/puppies', router);
+
+app.listen(PORT, () => {
+    console.log('Api de Puppies escuchandose en el puerto ' + PORT);
 });
-
-app.listen(8080);
