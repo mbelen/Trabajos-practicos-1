@@ -5,10 +5,72 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>TP5</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/estilos.css" />
 </head>
 <body>
-    
+<header>
+    <div class="header">
+        <img class="logo" src="img/logo.gif" alt="logo" width="150" height="100">
+        <input class="buscador" type="text">
+        <i class="fas fa-search"></i>
+    </div>        
+</header>
+    <div class="container">
+        <div class="filtro">
+            <p>Fecha</p>
+            <select>
+                <option value="Gifs"></option>                               
+            </select>
+            <p>Tamaño</p>
+            <select>
+                <option value="Pequeño">Pequeño</option>
+                <option value="Mediano">Mediano</option>
+                <option value="Grande">Grande</option>
+            </select>
+            <p>Categoría</p>
+            <select>
+                <option value=>Sport</option>
+                <option value=>Dog</option>
+                <option value=>cat</option>          
+            </select>
+            <br>
+            <button class="buton">Filtrar</button>
+        </div>
+        <div class="gif">
+            <div class="info">
+                <button class="boton">Detalle</button>
+            </div>
+            <div class="info">
+                <button class="boton">Detalle</button>
+            </div>
+            <div class="info">
+                <button class="boton">Detalle</button>
+            </div>
+            <div class="info">
+                <button class="boton">Detalle</button>
+            </div>
+            <div class="info">
+                <button class="boton">Detalle</button>
+            </div>
+            <div class="info">
+                <button class="boton">Detalle</button>
+            </div>
+        </div>
+        <div class="pag">
+            <section class="paginacion">
+                <ul>
+                    <li><a href="*" class="active">1</a></li>
+                    <li><a href="*">2</a></li>
+                    <li><a href="*">3</a></li>
+                    <li><a href="*">4</a></li>
+                    <li><a href="*">5</a></li>
+                </ul>
+            </section>
+        </div>
+    </div>
+<script src="./js/jquery.js"></script>
+<script src="routes/gifRouter.js"></script>
+<script src="utils/constants.js"></script>
+<script src="utils/server.js"></script>
 </body>
 </html>

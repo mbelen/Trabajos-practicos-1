@@ -1,0 +1,40 @@
+body {
+    background: black;
+}
+
+header {
+    margin-bottom: 20px;
+}
+
+.container {
+    display: flex;
+    
+}
+
+.filtro {
+    background: white;
+    width: 200px;
+    height: 300px;
+    border: 1px solid white;    
+    margin-right: 20px;
+}
+
+.gif {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 1000px;
+}
+
+.info {
+    background: white;
+    width: 300px;
+    height: 300px;
+    margin-bottom: 20px;
+    
+}
+
+.buscador {
+    width: 500px;
+    height: 30px;
+}

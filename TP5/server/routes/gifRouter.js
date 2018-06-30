@@ -28,6 +28,28 @@ gifs.post('/search', async (req, res, next) => {
         usarname: gif.username,
         import_datetime: gif.import_datetime
       }
+
+      $('#container').prepend(`
+        <div class="row">
+                <a href="${BASE_URL}">
+                      <div class="filtro">
+                        ${gif.title}
+                        ${gif.username}                        
+                      </div>
+                      <div class="gif">
+                        ${gif.images}
+                      </div>
+                      <div class="boton">
+                        ${gif.images}
+                        ${gif.title}
+                        ${gif.source}
+                        ${gif.username}
+                      </div>
+                </a>
+        </div>
+      `);
+    });  
+
       return payloads.push(payload)
     });
     
