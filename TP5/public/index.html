@@ -5,72 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>TP5</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="css/estilos.css" />
 </head>
 <body>
 <header>
     <div class="header">
         <img class="logo" src="img/logo.gif" alt="logo" width="150" height="100">
-        <input class="buscador" type="text">
-        <i class="fas fa-search"></i>
     </div>        
 </header>
     <div class="container">
         <div class="filtro">
-            <p>Fecha</p>
-            <select>
-                <option value="Gifs"></option>                               
+            <label for="categorias" class="title">Categorias</label>
+            <select id="categorias" name="categorias" class="select">
+                <option value="Perros" selected="selected">Perros</option>                               
+                <option value="Gatos">Gatos</option>                          
+                <option value="Memes">Memes</option>                        
             </select>
-            <p>Tamaño</p>
-            <select>
-                <option value="Pequeño">Pequeño</option>
-                <option value="Mediano">Mediano</option>
-                <option value="Grande">Grande</option>
+            <div class="buscador-container">
+                <input id="buscador" type="text" placeholder="Otra categoria">
+            </div>
+            <label for="formatos" class="title">Formatos</label>
+            <select id="formatos" name="formatos" class="select">
+                <option value="mp4">MP4</option>                               
+                <option value="url">Gif</option>                          
+                <option value="webp" selected="selected">Webp</option>                          
             </select>
-            <p>Categoría</p>
-            <select>
-                <option value=>Sport</option>
-                <option value=>Dog</option>
-                <option value=>cat</option>          
-            </select>
-            <br>
-            <button class="buton">Filtrar</button>
-        </div>
-        <div class="gif">
-            <div class="info">
-                <button class="boton">Detalle</button>
-            </div>
-            <div class="info">
-                <button class="boton">Detalle</button>
-            </div>
-            <div class="info">
-                <button class="boton">Detalle</button>
-            </div>
-            <div class="info">
-                <button class="boton">Detalle</button>
-            </div>
-            <div class="info">
-                <button class="boton">Detalle</button>
-            </div>
-            <div class="info">
-                <button class="boton">Detalle</button>
+            <div id="filter-btn" class="button button-filtrar">
+                <div class="button-text">Filtrar</div>
             </div>
         </div>
-        <div class="pag">
-            <section class="paginacion">
-                <ul>
-                    <li><a href="*" class="active">1</a></li>
-                    <li><a href="*">2</a></li>
-                    <li><a href="*">3</a></li>
-                    <li><a href="*">4</a></li>
-                    <li><a href="*">5</a></li>
-                </ul>
-            </section>
+        <div class="spinner">
+            <i class="fa fa-spinner"></i>
         </div>
+        <section id="gifs">
+            <section id="paginator"></section>
+        </section>
     </div>
-<script src="./js/jquery.js"></script>
-<script src="routes/gifRouter.js"></script>
-<script src="utils/constants.js"></script>
-<script src="utils/server.js"></script>
+<script src="./js/lib/jquery.js"></script>
+<script src="./js/lib/pagination.js"></script>
+<script src="./js/index.js"></script>
 </body>
 </html>

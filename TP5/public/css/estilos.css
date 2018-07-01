@@ -1,40 +1,207 @@
 body {
-    background: black;
-}
-
-header {
-    margin-bottom: 20px;
+    background: #18181a;
+    font-family: "Lato";
 }
 
 .container {
     display: flex;
-    
+    padding: 10px 10px;
+}
+
+.button {
+    cursor: pointer;
+    height: 45px;
+    letter-spacing: 2px;
+    width: 100%;
+    margin: 20px;
+    display: flex;
+    backface-visibility: hidden;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+    border-radius: 3px;
+    background-image: linear-gradient(90deg, #ea4c89, #ee9b83);
+}
+
+.button:hover {
+    background-image: linear-gradient(90deg, #ee9b83, #ea4c89);
+}
+
+.header {
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    width: 115px;
+    height: 100%;
+}
+
+.buscador-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#buscador {
+    margin: 15px 0;
+    border-radius: 3px;
+    height: 15px;
+    width: 100%;
+    border: none;
+}
+
+#buscador:focus {
+    outline: none;
+}
+
+.search-icon {
+    color: white;
+    cursor: pointer;
+}
+
+.search-icon:hover {
+    color: pink;
 }
 
 .filtro {
-    background: white;
-    width: 200px;
-    height: 300px;
-    border: 1px solid white;    
-    margin-right: 20px;
+    background: linear-gradient(103deg,#6157ff,#7067ff,#6157ff);
+    min-width: 200px;
+    height: 250px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-.gif {
+.title {
+    align-self: flex-start;
+    margin-bottom: 10px;
+}
+
+.select {
+    background: white;
+    width: 100%;
+}
+
+.select:focus {
+    outline: none;
+}
+
+
+#gifs {
+    padding: 0 10px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    width: 1000px;
+}
+
+.gif-card {
+    border-radius: 3px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 5px 15px 15px;
+    border: 1px solid #ffffff70;
+}
+
+.gif-card img {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    width: 300px;
+    height: 300px;
+}
+
+.video-gif {
+    width: 100%;
+    height: 300px;
 }
 
 .info {
-    background: white;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background: #18181a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ffffff70;
+    border-top: none;
     width: 300px;
-    height: 300px;
-    margin-bottom: 20px;
-    
 }
 
-.buscador {
-    width: 500px;
-    height: 30px;
+.info .button {
+    width: 50%;
+}
+
+.info .button .button-text {
+    color: white;
+    font-size: 20px;
+    margin: auto;
+}
+
+.like {
+    cursor: pointer;
+    width:50px;
+    height: 50px;
+    background-image: url('../img/corazon.png');
+    background-size: 1450px 50px;
+}
+
+.is-liked {
+    animation-name: like;
+    animation-duration: .8s;        
+    animation-timing-function: steps(28);
+    animation-fill-mode: forwards;
+}
+
+@keyframes like {
+    0% {
+       background-position: 0 0; 
+    }
+
+    100% {
+        background-position: right; 
+    }
+}
+
+#paginator {
+    width: 100%;
+}
+
+.spinner {
+    box-sizing: border-box;
+    border: solid .75em transparent;
+    color: #ea4c89;
+    width: 100%;
+    text-align: center;
+}
+
+.spinner i {
+    margin-top: 30px;
+    font-size: 3.5em;
+    animation: rotar-forever 2s linear infinite;
+}
+
+@keyframes rotar-forever {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+
+@media (max-width: 674px) {
+    .container {
+        flex-wrap: wrap;
+    }
+    
+    .filtro {
+        margin-bottom: 20px;
+        width: 100%;
+    }
 }
