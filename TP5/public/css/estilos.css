@@ -95,8 +95,13 @@ body {
 }
 
 
-#gifs {
+.gifs-container {
     padding: 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#gifs {
     display: flex;
     flex-wrap: wrap;
 }
@@ -145,6 +150,28 @@ body {
     margin: auto;
 }
 
+.like-icon {
+    color: white;
+}
+
+#paginator {
+    width: 100%;
+}
+
+.spinner {
+    box-sizing: border-box;
+    border: solid .75em transparent;
+    color: #ea4c89;
+    width: 100%;
+    text-align: center;
+}
+
+.spinner i {
+    margin-top: 30px;
+    font-size: 3.5em;
+    animation: rotar-forever 2s linear infinite;
+}
+
 .like {
     cursor: pointer;
     width:50px;
@@ -168,24 +195,6 @@ body {
     100% {
         background-position: right; 
     }
-}
-
-#paginator {
-    width: 100%;
-}
-
-.spinner {
-    box-sizing: border-box;
-    border: solid .75em transparent;
-    color: #ea4c89;
-    width: 100%;
-    text-align: center;
-}
-
-.spinner i {
-    margin-top: 30px;
-    font-size: 3.5em;
-    animation: rotar-forever 2s linear infinite;
 }
 
 @keyframes rotar-forever {
