@@ -23,7 +23,7 @@ function makePagination(values) {
               <div class="button">
                   <div class="button-text">Detalle</div>
               </div>
-              <div class="like" id="likeIcon"></div>
+              <div class="meGusta like-${index}" id="like" onclick="animateLike('like-${index}')"></div>
             </div>
           </div>
         `);
@@ -31,6 +31,14 @@ function makePagination(values) {
     }
   });
 }
+
+//$('#like').on('click', () => {
+    //$(this).toggleClass('#is-liked');
+  //}); 
+function animateLike(likeClass) {
+  $(`.${likeClass}`).toggleClass('is-liked');
+}
+
 function fetchSearch(value = '', option = null) {
   isLoading();
   $.post("http://localhost:8080/gifs/search",
@@ -80,15 +88,9 @@ $(document).ready( () => {
     options = event.target.value;
   });
 
-  $('.like').click( () => {
-    console.log('escuchando click');
-    $(this).toggleClass('is-liked');
-  }); 
-
   $('#filter-btn').on('click', () => {
     $('#gifs').empty();
     if(!value) value = $('#categorias').val();
     fetchSearch(value, options);
-  })
+  });
 });
-
